@@ -1,15 +1,13 @@
-//imports
 const mysql2 = require('mysql2');
 const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 
 const connection = mysql2.createConnection({
     host: 'localhost',
-    user: 'root',
+    user: 'ROOT',
     password: '',
-    database: 'employeesdb'
+    database: 'EmployeesDB'
 });
-//start connection, call necessary functions
 connection.connect(error =>{
     if(error) throw error;
     titleDrop();
@@ -31,7 +29,7 @@ function userPrompt(){
         [{
             type: 'list',
             name: 'choices',
-            message: 'What do you want to do?',
+            message: 'Choose.',
             choices: [
                 'View departments',
                 'View roles',
@@ -74,13 +72,12 @@ function userPrompt(){
     }
     );
 };
-//let user know what's happening, throw new line 
+//let user know what's happening 
 function displayDepartments(){
     console.log('Displaying departments \n');
     const statement = `SELECT id,   
                        name AS department 
                        FROM department`;
-    //run query against established connection
     connection.query(statement, function (error, result){
         if(error) throw error;
         console.table(result);
@@ -107,7 +104,6 @@ function displayRoles(){
 
 function displayEmployees(){
     console.log('Displaying employees \n');
-    //left join here to leave out other columns from department and role
     const statement = `Select e.id,
                        e.first_name,
                        e.last_name,
@@ -136,7 +132,6 @@ function addDepartment(){
             name: 'depAdd',
             message: 'What department would you like to add?',
             validate(depAdd){
-                //checks if user just didn't enter anything
                 if(depAdd){return true;}
                 else{
                     console.log('Must enter department name');
@@ -148,7 +143,6 @@ function addDepartment(){
     ).then(response =>{
         const statement = `INSERT INTO department
                            (name) VALUES (?)`;
-        //takes response from inquirer prompt to use with query for parameters for query
         connection.query(statement, response.depAdd, function (error, result){
             if(error) throw error;
             //let user know what they added, then display the changes (which also calls main menu from display function)
@@ -187,13 +181,11 @@ function addRole(){
             }
         ]
     ).then(response =>{
-        //get list of departments to choose where role is
         const input = [response.roleAdd, response.salaryAdd];
         const listDepartments = `SELECT * FROM department`;
 
         connection.query(listDepartments, function(error, result){
             if(error) throw error;
-            //map the name and associated id from query
             const dep = result.map(({name, id}) => ({name: name, value: id}));
             
             inquirer.prompt(
@@ -225,7 +217,6 @@ function addEmployee(){
     inquirer.prompt(
         [
             {
-                //enter first and last name separately, tried together but was annoying
                 type: 'input',
                 name: 'firstName',
                 message: "What's the employee's first name?",
@@ -251,7 +242,6 @@ function addEmployee(){
             }
         ]
     ).then(response =>{
-        //get list of existing roles to create list to choose from
         const input = [response.firstName, response.lastName];
         const listRoles = `SELECT id, title FROM role`;
 
@@ -269,7 +259,6 @@ function addEmployee(){
             ).then(choice =>{
                 const role = choice.role;
                 input.push(role);
-                //same type of for managers like done for roles
                 const listManagers = `SELECT * FROM employee`;
                 connection.query(listManagers, function(error, result){
                     if(error) throw error;
@@ -320,7 +309,6 @@ function updateEmployeeRole(){
             const employee = choice.name;
             //create empty list item, will eventually be populated by role_id and employee (indexes 0 and 1)
             const roleEmployee = [];
-            //push selection into roleEmployee item
             roleEmployee.push(employee)
 
             const listRoles = `SELECT * FROM role`;
@@ -357,7 +345,7 @@ function updateEmployeeRole(){
 
     
 };
-//Kill connection if user doesn't wanna do anything
+//Kill connection if done anything
 function doNothing(){
     connection.end();
 };
