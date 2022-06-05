@@ -5,7 +5,8 @@
 * [Aceptance Criteria](#acceptance-criteria)
 * [Required Packages](#required-packages)
 * [Installation](#installation)
-* [Use](#use)
+* [Video Demo](#video-demo)
+
 
 ## Required Packages
 
@@ -18,8 +19,6 @@ ConsoleTable
 When the repository is cloned, the user runs the schema.sql file (SQL/schema.sql). If data present in the tables are desired, then run seeds.sql right after.
 
 Run 'mysql -u root -p' from the terminal in the root directory of the project to vew mysql.
-
-Video demo: [Link](https://drive.google.com/file/d/1j98JN3SbQTrRuBn8tF1e8UXtz90e393-/view?usp=sharing)
 
 ## User Story
 ```
@@ -49,3 +48,5 @@ THEN I am prompted to enter the employee’s first name, last name, role, and ma
 WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ```
+## Video Demo
+Video demo: [Link](https://drive.google.com/file/d/1j98JN3SbQTrRuBn8tF1e8UXtz90e393-/view?usp=sharing)
