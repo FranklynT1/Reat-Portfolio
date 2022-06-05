@@ -4,9 +4,9 @@ const consoleTable = require('console.table');
 
 const connection = mysql2.createConnection({
     host: 'localhost',
-    user: 'ROOT',
-    password: '',
-    database: 'EmployeesDB'
+    user: 'root',
+    password: 'Slacker01@',
+    database: 'employeesdb'
 });
 connection.connect(error =>{
     if(error) throw error;
@@ -15,15 +15,14 @@ connection.connect(error =>{
 });
 
 function titleDrop(){
-    console.log(chalk.yellow.bold(`====================================================================================`));
-    console.log(``);
-    console.log(chalk.greenBright.bold(figlet.textSync('Employee Tracker')));
+    console.log(`====================================================================================`);
     console.log(``);
     console.log(``);
-    console.log(chalk.yellow.bold(`====================================================================================`));
-    promptUser();
-  }
-
+    console.log('Employee Tracker')
+    console.log(``);
+    console.log(``);
+    console.log(`====================================================================================`);
+}
 function userPrompt(){
     inquirer.prompt(
         [{
@@ -72,7 +71,6 @@ function userPrompt(){
     }
     );
 };
-//let user know what's happening 
 function displayDepartments(){
     console.log('Displaying departments \n');
     const statement = `SELECT id,   
@@ -81,7 +79,6 @@ function displayDepartments(){
     connection.query(statement, function (error, result){
         if(error) throw error;
         console.table(result);
-        //when done, go back to "main menu"
         userPrompt();
     });
 };
