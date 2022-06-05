@@ -49,4 +49,4 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ```
 ## Video Demo
-Video demo: [Link]https://drive.google.com/file/d/14aD7pIUowa5V-3XYZVQCLbWUG_iuwcZU/view?usp=sharing)
+Video demo: [Link](https://drive.google.com/file/d/14aD7pIUowa5V-3XYZVQCLbWUG_iuwcZU/view?usp=sharing)
