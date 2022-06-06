@@ -24,17 +24,17 @@ INSERT INTO role (title, salary, department_id) VALUES
 ('Regional Sales Manager', 69000, 5);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES
-('Bob', 'Barker', 1, 1),
-('Lindsay', 'Willis', 1, 2),
-('Saget', 'Bob', 2, NULL),
-('David', 'Dickens', 3, 8),
-('Steve', 'Richardson', 3, NULL),
-('Chester', 'Malone', 4, NULL),
-('Tony', 'Two Shoes', 5, 5),
-('Nicholas', 'Cage', 11, 12),
-('Hank', 'Hill', 10, 6),
-('Denice', 'Desalad', 9, 9),
-('Mantis', 'Toboggan', 6, NULL),
-('Mac', 'Miller', 7, 6),
-('Brian', 'Blian', 8, NULL),
-('Stephanie', 'Sodds', 11, NULL);
+('Elvis', 'Precly', 1, 1),
+('Land', 'Mine', 1, 2),
+('Jane', 'Doe', 2, NULL),
+('Danny', 'Phenton', 3, 8),
+('Mace', 'Windu', 3, NULL),
+('Anikin', 'Skywalker', 4, NULL),
+('Tamy', 'Three Gloves', 5, 5),
+('Johney', 'Cage', 11, 12),
+('Boby', 'Hill', 10, 6),
+('Kermit', 'The-Frog', 9, 9),
+('Flying', 'Lotus', 6, NULL),
+('Wu', 'Tang', 7, 6),
+('Frank', 'Sinatra', 8, NULL),
+('Anderson', 'Neo', 11, NULL);
