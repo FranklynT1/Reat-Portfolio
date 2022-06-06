@@ -6,13 +6,13 @@ USE employeesdb;
 DROP TABLE IF EXISTS department;
 CREATE TABLE department (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(30) NOT NULL
+    name VARCHAR(45) NOT NULL
 );
 
 DROP TABLE IF EXISTS role;
 CREATE TABLE role (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(30) NOT NULL,
+    title VARCHAR(45) NOT NULL,
     salary DECIMAL NOT NULL,
     department_id INT,
     INDEX department_ind (department_id),
@@ -25,8 +25,8 @@ CREATE TABLE role (
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
+    first_name VARCHAR(45) NOT NULL,
+    last_name VARCHAR(45) NOT NULL,
     role_id INT,
     INDEX role_ind (role_id),
     CONSTRAINT role_fk 
